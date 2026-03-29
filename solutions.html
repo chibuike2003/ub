@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Solutions | UB Multipurpose Technology</title>
+    
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #007bff;
+            --dark: #1a1a2e;
+            --light: #f4f4f9;
+            --accent: #00d4ff;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background: var(--light); color: #333; line-height: 1.6; overflow-x: hidden; }
+        
+        /* Navigation */
+        nav { 
+            background: var(--dark); 
+            padding: 0.8rem 5%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .nav-logo-container { display: flex; align-items: center; text-decoration: none; }
+        .nav-logo-img { height: 40px; width: auto; margin-right: 10px; border-radius: 4px; }
+        .logo-text { color: white; font-size: 1.2rem; font-weight: bold; letter-spacing: 1px; }
+
+        nav ul { display: flex; list-style: none; align-items: center; }
+        nav ul li { margin-left: 25px; }
+        nav ul li a { color: white; text-decoration: none; transition: 0.3s; font-size: 0.9rem; text-transform: uppercase; font-weight: 500; }
+        nav ul li a:hover { color: var(--accent); }
+
+        .menu-toggle { display: none; color: white; font-size: 1.5rem; cursor: pointer; }
+
+        /* Solutions Header */
+        .solutions-header { 
+            background: linear-gradient(135deg, var(--dark) 0%, #252545 100%); 
+            color: white; 
+            padding: clamp(4rem, 10vh, 6rem) 5%; 
+            text-align: center; 
+        }
+        .solutions-header h1 { font-size: clamp(2rem, 8vw, 3rem); margin-bottom: 1rem; }
+        .solutions-header p { font-size: clamp(1rem, 4vw, 1.2rem); opacity: 0.8; max-width: 700px; margin: 0 auto; }
+
+        /* Product Grid */
+        .product-section { padding: 5rem 10%; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+        
+        .product-card { 
+            background: white; 
+            border-radius: 20px; 
+            overflow: hidden; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
+            transition: 0.4s;
+            display: flex;
+            flex-direction: column;
+        }
+        .product-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+        
+        .product-img { 
+            height: 200px; 
+            background-color: #eee; 
+            background-size: cover; 
+            background-position: center; 
+            position: relative;
+        }
+        .product-tag { 
+            position: absolute; 
+            top: 15px; 
+            right: 15px; 
+            background: var(--accent); 
+            color: var(--dark); 
+            padding: 5px 15px; 
+            border-radius: 20px; 
+            font-size: 0.75rem; 
+            font-weight: bold; 
+        }
+
+        .product-info { padding: 30px; flex-grow: 1; }
+        .product-info h3 { font-size: 1.5rem; margin-bottom: 15px; color: var(--dark); }
+        .product-info p { color: #666; margin-bottom: 20px; font-size: 0.95rem; }
+        
+        .tech-list { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+        .tech-item { background: #f0f4f8; padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; color: var(--primary); font-weight: 600; }
+
+        /* Lab Banner */
+        .lab-banner { 
+            background: var(--primary); 
+            color: white; 
+            padding: 4rem 5%; 
+            text-align: center; 
+            border-radius: 30px; 
+            margin: 0 10% 5rem 10%;
+        }
+        .lab-banner h2 { font-size: clamp(1.5rem, 5vw, 2.2rem); margin-bottom: 1rem; }
+        .lab-banner .btn-white { 
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 35px; 
+            background: white; 
+            color: var(--primary); 
+            text-decoration: none; 
+            border-radius: 50px; 
+            font-weight: bold; 
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .lab-banner .btn-white:hover { background: var(--accent); color: var(--dark); transform: scale(1.05); }
+
+        footer { background: var(--dark); color: white; text-align: center; padding: 3rem 5%; font-size: 0.9rem; }
+
+        /* Responsive Media Queries */
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--dark);
+                padding: 20px 0;
+                border-top: 1px solid rgba(255,255,255,0.1);
+            }
+            nav ul.active { display: flex; }
+            nav ul li { margin: 15px 0; margin-left: 0; }
+            .product-section { padding: 3rem 5%; }
+            .lab-banner { margin: 0 5% 3rem 5%; border-radius: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="nav-logo-container">
+            <img src="logo.png" alt="UB Tech Logo" class="nav-logo-img">
+            <div class="logo-text">UB TECH</div>
+        </a>
+        
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <ul id="nav-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="solutions.html" style="color: var(--accent);">Our Solutions</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="solutions-header">
+        <h1>Our Innovation Lab</h1>
+        <p>In-house proprietary technologies engineered in Enugu to solve global complexities with simplified precision.</p>
+    </header>
+
+    <section class="product-section">
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=500&q=80');">
+                    <span class="product-tag">HARDWARE</span>
+                </div>
+                <div class="product-info">
+                    <h3>UB-Streamline 1.0</h3>
+                    <p>An autonomous sensor-driven system designed to monitor industrial equipment health and predict failures before they happen.</p>
+                    <div class="tech-list">
+                        <span class="tech-item">IoT</span>
+                        <span class="tech-item">Edge Computing</span>
+                        <span class="tech-item">Hardware IP</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1551288049-bbbda536339a?auto=format&fit=crop&w=500&q=80');">
+                    <span class="product-tag">SOFTWARE</span>
+                </div>
+                <div class="product-info">
+                    <h3>Nexus Core OS</h3>
+                    <p>A simplified, localized enterprise operating system that bridges the gap between rural production and urban management.</p>
+                    <div class="tech-list">
+                        <span class="tech-item">Proprietary OS</span>
+                        <span class="tech-item">Cloud Native</span>
+                        <span class="tech-item">Zero-Latency</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=500&q=80');">
+                    <span class="product-tag">FINTECH SOLUTIONS</span>
+                </div>
+                <div class="product-info">
+                    <h3>UB-Pay Infrastructure</h3>
+                    <p>A unique payment gateway logic built to function in low-connectivity areas across Africa, ensuring trade never stops.</p>
+                    <div class="tech-list">
+                        <span class="tech-item">Offline Ledger</span>
+                        <span class="tech-item">Encrypted IP</span>
+                        <span class="tech-item">API Ecosystem</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="lab-banner">
+        <h2>Have a unique sector challenge?</h2>
+        <p>We are constantly researching new ways to solve the unsolvable. Our hub is also open for tech talent development.</p>
+        <a href="contact.html" class="btn-white">Become A Student In The UB Tech Hub</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 UB Multipurpose Technology Company Limited. <br> 
+        Headquartered in Enugu State, Nigeria.</p>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('mobile-menu');
+        const navList = document.getElementById('nav-list');
+
+        menuToggle.addEventListener('click', () => {
+            navList.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+    </script>
+</body>
+</html>
