@@ -3,238 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | UB Multipurpose Technology</title>
-    
+    <title>Contact UB Tech</title>
     <link rel="icon" type="image/png" href="logo.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
     <style>
-        :root {
-            --primary: #007bff;
-            --dark: #1a1a2e;
-            --light: #f4f4f9;
-            --accent: #00d4ff;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background: var(--light); color: #333; line-height: 1.6; overflow-x: hidden; }
+        :root { --primary: #2563eb; --dark: #0f172a; }
+        body { font-family: 'Inter', sans-serif; background: #f8fafc; margin: 0; }
+        header { padding: 1rem 10%; display: flex; justify-content: space-between; background: white; }
         
-        /* Navigation */
-        nav { 
-            background: var(--dark); 
-            padding: 0.8rem 5%; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            position: sticky; 
-            top: 0; 
-            z-index: 1000; 
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-        }
-        
-        .nav-logo-container { display: flex; align-items: center; text-decoration: none; }
-        .nav-logo-img { height: 40px; width: auto; margin-right: 10px; border-radius: 4px; }
-        .logo-text { color: white; font-size: 1.2rem; font-weight: bold; letter-spacing: 1px; }
-
-        nav ul { display: flex; list-style: none; align-items: center; }
-        nav ul li { margin-left: 25px; }
-        nav ul li a { color: white; text-decoration: none; transition: 0.3s; font-size: 0.9rem; text-transform: uppercase; font-weight: 500; }
-        nav ul li a:hover { color: var(--accent); }
-
-        .menu-toggle { display: none; color: white; font-size: 1.5rem; cursor: pointer; }
-
-        /* Header */
-        .contact-header {
-            background: linear-gradient(135deg, var(--dark) 0%, #252545 100%);
-            color: white;
-            padding: 4rem 5%;
-            text-align: center;
-        }
-        .contact-header h1 { font-size: clamp(2rem, 8vw, 3rem); margin-bottom: 10px; }
-        .contact-header p { opacity: 0.8; font-size: 1.1rem; }
-
-        /* Layout */
-        .container { 
-            padding: 5rem 10%; 
+        .contact-wrap { 
+            max-width: 1000px; 
+            margin: 60px auto; 
             display: grid; 
-            grid-template-columns: 1.2fr 0.8fr; 
-            gap: 50px; 
-            max-width: 1400px;
-            margin: 0 auto;
+            grid-template-columns: 1fr 1.5fr;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.1);
         }
 
-        /* Form Styling */
-        .form-card { background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .form-group { margin-bottom: 20px; }
-        label { display: block; margin-bottom: 8px; font-weight: 600; color: var(--dark); }
+        .info-pane { background: var(--dark); color: white; padding: 50px; }
+        .form-pane { padding: 50px; }
+
         input, textarea { 
             width: 100%; 
             padding: 12px; 
-            border: 2px solid #eee; 
-            border-radius: 8px; 
-            outline: none; 
-            transition: 0.3s;
-            font-size: 1rem;
+            margin: 10px 0 20px; 
+            border: 1px solid #e2e8f0; 
+            border-radius: 6px; 
+            background: #f1f5f9;
         }
-        input:focus, textarea:focus { border-color: var(--primary); }
-        
-        .btn-submit { 
+
+        button { 
             background: var(--primary); 
             color: white; 
-            padding: 15px 30px; 
             border: none; 
-            border-radius: 50px; 
-            cursor: pointer; 
-            font-size: 1rem; 
-            font-weight: bold;
-            transition: 0.3s;
+            padding: 15px 30px; 
+            border-radius: 6px; 
+            font-weight: bold; 
+            cursor: pointer;
             width: 100%;
         }
-        .btn-submit:hover { background: var(--accent); color: var(--dark); transform: translateY(-2px); }
 
-        /* Info Card Styling */
-        .info-card { 
-            background: var(--dark); 
-            color: white; 
-            padding: 40px; 
-            border-radius: 15px; 
-            height: fit-content; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-        .info-card h3 { color: var(--accent); margin-bottom: 25px; font-size: 1.5rem; }
-        .info-item { display: flex; align-items: flex-start; margin-bottom: 20px; }
-        .info-item i { color: var(--accent); margin-right: 15px; margin-top: 5px; font-size: 1.2rem; }
-        .info-item p { font-size: 1rem; line-height: 1.5; }
-        
-        .hours { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 30px; padding-top: 20px; }
-
-        footer { background: var(--dark); color: white; text-align: center; padding: 3rem 5%; font-size: 0.9rem; }
-
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .container { grid-template-columns: 1fr; padding: 3rem 5%; gap: 30px; }
-            .info-card { order: 2; }
-            .form-card { order: 1; padding: 30px; }
-        }
-
-        @media (max-width: 768px) {
-            .menu-toggle { display: block; }
-            nav ul {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: var(--dark);
-                padding: 20px 0;
-                border-top: 1px solid rgba(255,255,255,0.1);
-            }
-            nav ul.active { display: flex; }
-            nav ul li { margin: 15px 0; margin-left: 0; text-align: center; }
-        }
+        button:hover { background: #1d4ed8; }
     </style>
 </head>
 <body>
-
-    <nav>
-        <a href="index.html" class="nav-logo-container">
-            <img src="logo.png" alt="UB Tech Logo" class="nav-logo-img">
-            <div class="logo-text">UB TECH</div>
-        </a>
-        
-        <div class="menu-toggle" id="mobile-menu">
-            <i class="fas fa-bars"></i>
-        </div>
-
-        <ul id="nav-list">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="solutions.html">Our Solutions</a></li>
-            <li><a href="contact.html" style="color: var(--accent);">Contact</a></li>
-        </ul>
-    </nav>
-
-    <header class="contact-header">
-        <h1>Connect With Our Hub</h1>
-        <p>Whether you're curious about our proprietary tech or want to join the UB Tech Hub lab, we're ready.</p>
+    <header>
+        <img src="logo.png" alt="UB Logo" style="height:40px;">
+        <nav style="display: flex; align-items: center;">
+            <a href="index.html" style="text-decoration:none; color:var(--dark); font-weight:600;">Back to Home</a>
+        </nav>
     </header>
 
-    <section class="container">
-        <div class="form-card">
-            <h2 style="margin-bottom: 20px; color: var(--dark);">Send Us a Message</h2>
-            <form id="contact-form">
-                <div class="form-group">
-                    <label>Full Name</label>
-                    <input type="text" placeholder="John Doe" required>
-                </div>
-                <div class="form-group">
-                    <label>Email Address</label>
-                    <input type="email" placeholder="john@example.com" required>
-                </div>
-                <div class="form-group">
-                    <label>Inquiry Type</label>
-                    <select style="width: 100%; padding: 12px; border: 2px solid #eee; border-radius: 8px; font-size: 1rem;">
-                        <option>General Inquiry</option>
-                        <option>Product Partnership</option>
-                        <option>UB Tech Hub Student Program</option>
-                        <option>Investment/Innovation Lab</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Message</label>
-                    <textarea rows="5" placeholder="Tell us about your interest or challenge..." required></textarea>
-                </div>
-                <button type="submit" class="btn-submit">Send Message</button>
+    <div class="contact-wrap">
+        <div class="info-pane">
+            <h2>Contact Us</h2>
+            <p style="opacity: 0.7; margin: 20px 0;">Let's discuss how UB Multipurpose Technology can optimize your operations.</p>
+            <div style="margin-top: 40px;">
+                <p><strong>Email:</strong> hello@ubtech.com</p>
+                <p><strong>Phone:</strong> +234 800 UBTECH</p>
+            </div>
+        </div>
+        <div class="form-pane">
+            <form>
+                <label>Name</label>
+                <input type="text" placeholder="Your name">
+                <label>Email</label>
+                <input type="email" placeholder="email@company.com">
+                <label>Message</label>
+                <textarea rows="4" placeholder="How can we help?"></textarea>
+                <button type="submit">Submit Request</button>
             </form>
         </div>
-
-        <div class="info-card">
-            <h3>Contact Information</h3>
-            
-            <div class="info-item">
-                <i class="fas fa-map-marker-alt"></i>
-                <p><strong>Headquarters:</strong><br>Enugu State, Nigeria</p>
-            </div>
-
-            <div class="info-item">
-                <i class="fas fa-envelope"></i>
-                <p><strong>Email:</strong><br>info@ubtechlimited.com</p>
-            </div>
-
-            <div class="info-item">
-                <i class="fas fa-phone-alt"></i>
-                <p><strong>Lab Support:</strong><br>+234 (0) 000 000 0000</p>
-            </div>
-
-            <div class="hours">
-                <h4 style="color: var(--accent); margin-bottom: 15px;">Innovation Lab Hours</h4>
-                <p>Mon - Fri: 9:00 AM - 6:00 PM</p>
-                <p>Sat: 10:00 AM - 2:00 PM (Research Only)</p>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 UB Multipurpose Technology Company Limited. <br> 
-        Innovating from Enugu, Nigeria to the World.</p>
-    </footer>
-
-    <script>
-        const menuToggle = document.getElementById('mobile-menu');
-        const navList = document.getElementById('nav-list');
-
-        menuToggle.addEventListener('click', () => {
-            navList.classList.toggle('active');
-            const icon = menuToggle.querySelector('i');
-            icon.classList.toggle('fa-bars');
-            icon.classList.toggle('fa-times');
-        });
-
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for reaching out! Our team in Enugu will contact you shortly.');
-            this.reset();
-        });
-    </script>
+    </div>
 </body>
 </html>
