@@ -6,61 +6,56 @@
     <title>Our Services | UB Tech</title>
     <link rel="icon" type="image/png" href="logo.png">
     <style>
-        :root { --primary: #2563eb; --dark: #0f172a; --light: #f1f5f9; }
-        body { font-family: sans-serif; background: var(--light); color: var(--dark); margin: 0; }
-        
-        header { padding: 1rem 10%; display: flex; justify-content: space-between; align-items: center; background: white; border-bottom: 1px solid #e2e8f0; }
-        .logo-container img { height: 45px; }
-        nav a { margin-left: 20px; text-decoration: none; color: #475569; font-weight: 500; }
+        :root { --primary: #2563eb; --dark: #0f172a; --bg: #f1f5f9; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: sans-serif; background: var(--bg); }
 
-        .service-header { text-align: center; padding: 80px 10%; background: white; }
-        .service-header h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        header { background: white; padding: 1rem 10%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        header img { height: 40px; }
 
-        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; padding: 40px 10%; }
-        
-        .s-card {
-            background: white;
-            padding: 50px 30px;
-            border-radius: 15px;
-            transition: 0.4s;
-            position: relative;
-            overflow: hidden;
-            border-bottom: 4px solid transparent;
+        /* Menu Button */
+        .menu-toggle { display: none; flex-direction: column; cursor: pointer; gap: 5px; background: none; border: none; }
+        .menu-toggle span { display: block; width: 25px; height: 3px; background: var(--dark); }
+
+        nav ul { display: flex; list-style: none; gap: 20px; }
+        nav a { text-decoration: none; color: var(--dark); font-weight: 600; }
+
+        .container { padding: 80px 10%; text-align: center; }
+        .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 50px; }
+        .s-card { background: white; padding: 40px 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: 0.3s; }
+        .s-card:hover { transform: translateY(-5px); border-top: 4px solid var(--primary); }
+
+        @media (max-width: 900px) { .service-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) {
+            header { padding: 1rem 5%; }
+            .menu-toggle { display: flex; }
+            nav ul { display: none; flex-direction: column; position: absolute; top: 70px; left: 0; width: 100%; background: white; padding: 20px; text-align: center; }
+            nav ul.active { display: flex; }
+            .service-grid { grid-template-columns: 1fr; }
+            .container { padding: 40px 5%; }
         }
-
-        .s-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); border-color: var(--primary); }
-        .s-card h2 { margin-bottom: 20px; font-size: 1.4rem; }
-        .s-card p { color: #64748b; }
     </style>
 </head>
 <body>
     <header>
-        <div class="logo-container"><img src="logo.png" alt="UB Logo"></div>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="services.html">Services</a>
-            <a href="contact.html">Contact</a>
-        </nav>
+        <img src="logo.png" alt="UB Logo">
+        <button class="menu-toggle" id="mobile-menu"><span></span><span></span><span></span></button>
+        <nav><ul id="nav-list"><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul></nav>
     </header>
 
-    <div class="service-header">
-        <h1>Multipurpose Expertise</h1>
-        <p>Tailored technology stacks for every modern challenge.</p>
+    <div class="container">
+        <h1>Versatile Solutions</h1>
+        <div class="service-grid">
+            <div class="s-card"><h2>Software</h2><p>Custom enterprise and mobile app development.</p></div>
+            <div class="s-card"><h2>Networking</h2><p>Advanced security and IT infrastructure setup.</p></div>
+            <div class="s-card"><h2>Consulting</h2><p>Strategic technology roadmaps for growth.</p></div>
+        </div>
     </div>
 
-    <div class="service-grid">
-        <div class="s-card">
-            <h2>Custom Software</h2>
-            <p>From ERP systems to niche mobile apps, we code for your success.</p>
-        </div>
-        <div class="s-card">
-            <h2>Network Solutions</h2>
-            <p>Building the hardware backbone for offices and remote workforces.</p>
-        </div>
-        <div class="s-card">
-            <h2>Digital Strategy</h2>
-            <p>Consulting on digital transformation to keep you ahead of competitors.</p>
-        </div>
-    </div>
+    <script>
+        const menuToggle = document.getElementById('mobile-menu');
+        const navList = document.getElementById('nav-list');
+        menuToggle.addEventListener('click', () => navList.classList.toggle('active'));
+    </script>
 </body>
 </html>
