@@ -3,78 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact UB Tech</title>
+    <title>Contact Us | UB Tech</title>
     <link rel="icon" type="image/png" href="logo.png">
     <style>
         :root { --primary: #2563eb; --dark: #0f172a; }
-        body { font-family: 'Inter', sans-serif; background: #f8fafc; margin: 0; }
-        header { padding: 1rem 10%; display: flex; justify-content: space-between; background: white; }
-        
-        .contact-wrap { 
-            max-width: 1000px; 
-            margin: 60px auto; 
-            display: grid; 
-            grid-template-columns: 1fr 1.5fr;
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.1);
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: sans-serif; background: #f8fafc; }
+
+        header { background: white; padding: 1rem 10%; display: flex; justify-content: space-between; align-items: center; }
+        header img { height: 40px; }
+
+        .menu-toggle { display: none; flex-direction: column; cursor: pointer; gap: 5px; background: none; border: none; }
+        .menu-toggle span { display: block; width: 25px; height: 3px; background: var(--dark); }
+        nav ul { display: flex; list-style: none; gap: 20px; }
+        nav a { text-decoration: none; color: var(--dark); font-weight: 600; }
+
+        .contact-wrap { max-width: 900px; margin: 60px auto; background: white; display: grid; grid-template-columns: 1fr 1.5fr; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .info { background: var(--dark); color: white; padding: 40px; }
+        .form { padding: 40px; }
+        input, textarea { width: 100%; padding: 12px; margin: 10px 0 20px; border: 1px solid #ddd; border-radius: 5px; }
+        button { width: 100%; padding: 15px; background: var(--primary); color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; }
+
+        @media (max-width: 768px) {
+            .contact-wrap { grid-template-columns: 1fr; margin: 20px; }
+            header { padding: 1rem 5%; }
+            .menu-toggle { display: flex; }
+            nav ul { display: none; flex-direction: column; position: absolute; top: 70px; left: 0; width: 100%; background: white; padding: 20px; text-align: center; }
+            nav ul.active { display: flex; }
         }
-
-        .info-pane { background: var(--dark); color: white; padding: 50px; }
-        .form-pane { padding: 50px; }
-
-        input, textarea { 
-            width: 100%; 
-            padding: 12px; 
-            margin: 10px 0 20px; 
-            border: 1px solid #e2e8f0; 
-            border-radius: 6px; 
-            background: #f1f5f9;
-        }
-
-        button { 
-            background: var(--primary); 
-            color: white; 
-            border: none; 
-            padding: 15px 30px; 
-            border-radius: 6px; 
-            font-weight: bold; 
-            cursor: pointer;
-            width: 100%;
-        }
-
-        button:hover { background: #1d4ed8; }
     </style>
 </head>
 <body>
     <header>
-        <img src="logo.png" alt="UB Logo" style="height:40px;">
-        <nav style="display: flex; align-items: center;">
-            <a href="index.html" style="text-decoration:none; color:var(--dark); font-weight:600;">Back to Home</a>
-        </nav>
+        <img src="logo.png" alt="Logo">
+        <button class="menu-toggle" id="mobile-menu"><span></span><span></span><span></span></button>
+        <nav><ul id="nav-list"><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul></nav>
     </header>
 
     <div class="contact-wrap">
-        <div class="info-pane">
-            <h2>Contact Us</h2>
-            <p style="opacity: 0.7; margin: 20px 0;">Let's discuss how UB Multipurpose Technology can optimize your operations.</p>
-            <div style="margin-top: 40px;">
-                <p><strong>Email:</strong> ubmultipurposelimited@gmail.com</p>
-                <p><strong>Phone:</strong> +2349070381052</p>
-            </div>
-        </div>
-        <div class="form-pane">
-            <form>
-                <label>Name</label>
-                <input type="text" placeholder="Your name">
-                <label>Email</label>
-                <input type="email" placeholder="email@company.com">
-                <label>Message</label>
-                <textarea rows="4" placeholder="How can we help?"></textarea>
-                <button type="submit">Submit Request</button>
-            </form>
-        </div>
+        <div class="info"><h2>Connect</h2><p>Reach out to UB Tech today.</p></div>
+        <div class="form"><form><input type="text" placeholder="Name"><input type="email" placeholder="Email"><textarea rows="4" placeholder="Message"></textarea><button>Send</button></form></div>
     </div>
+
+    <script>
+        const menuToggle = document.getElementById('mobile-menu');
+        const navList = document.getElementById('nav-list');
+        menuToggle.addEventListener('click', () => navList.classList.toggle('active'));
+    </script>
 </body>
 </html>
